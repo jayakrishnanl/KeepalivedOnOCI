@@ -90,7 +90,7 @@ module "create_web" {
   nsgs                            = "${list(oci_core_network_security_group.keepalived_nsg.id)}"
   bastion_user                    = "${var.bastion_user}"
   timezone                        = "${var.timezone}"
-  user_data                       = "./userdata/bootstrap_web.tpl"
+  user_data                       = "${data.template_file.bootstrap_web.rendered}"
 }
 
 
