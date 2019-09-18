@@ -28,6 +28,6 @@ vrrp_instance vrrp_1 {
                 chk_haproxy
         }
 
-    notify_master "/etc/keepalived/ip_failover.sh" root
-    notify_backup "/etc/keepalived/ip_release.sh" root
+    notify_master "/usr/libexec/keepalived/ip_failover.sh" root
+    notify_backup "/usr/libexec/keepalived/ip_release.sh" root
 }
