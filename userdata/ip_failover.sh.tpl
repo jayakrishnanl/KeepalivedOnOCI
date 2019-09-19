@@ -4,6 +4,6 @@
 
 OCI=`which oci`
 
-$OCI network vnic assign-private-ip  --vnic-id ${VNIC} --ip-address ${VIP}  --unassign-if-already-assigned
+$OCI network vnic assign-private-ip  --vnic-id ${VNIC} --ip-address ${VIP}  --unassign-if-already-assigned --auth instance_principal
 
 ip addr add ${VIP}/24 dev ens3:1 label ens3:1
