@@ -35,12 +35,6 @@ variable "RegionalPublicValue" {
   description = "Freeform tag Value specified to your existing Regional Public Subnet"
 }
 
-/*
-variable "AD" {
-  description = "Setting AD = [\"1\"] deploys infrastructure in single availability domain (Availabilty domain 1 of the tenancy in this case) and AD = [\"1\",\"2\"] deploys infrastructure in multiple ADs (Avilability domains 1 and 2 of the tenancy in this case)"
-  type        = "list"
-}*/
-
 # Compute Instance variables
 variable "ssh_public_key" {
   description = "SSH public key for instances"
@@ -100,7 +94,7 @@ variable "compute_instance_user" {
 }
 
 variable "VIP" {
-  description = "LB Floating IP"
+  description = "LB Floating IP - Please use an unused IP from your Subnet"
 }
 
 variable "instance_image_ocid" {
