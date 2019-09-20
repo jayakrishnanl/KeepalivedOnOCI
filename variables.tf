@@ -10,6 +10,10 @@ variable "region" {
 }
 
 variable "compartment_ocid" {}
+variable "compartment_name" {
+  description = "Compartment name for writing IAM policies"
+}
+
 
 variable "vcn_id" {
   description = "OCID your VCN - Make sure you have tagged the Private & Public Subnets per instructions"

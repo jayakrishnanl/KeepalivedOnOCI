@@ -250,3 +250,23 @@ resource "oci_core_network_security_group_security_rule" "bastion_nsg_rule_5" {
     }
   }
 }
+
+module "iam_dynamic_group" {
+  source = "./modules/iam/dynamic-group/"
+
+  providers = {
+    "oci" = "oci.home"
+  }
+
+  tenancy_ocid              = "${var.tenancy_ocid}"
+  dynamic_group_name        = "keepalived_dynamic_group"
+  dynamic_group_description = "dynamic group created for HaProxy env"
+  dynamic_group_rule        = "instance.compartment.id = '${var.compartment_ocid}'"
+  policy_compartment_id     = "${var.compartment_ocid}"
+  policy_compartment_name   = "${var.compartment_name}"
+  policy_name               = "keepalived-dynamic-policy"
+  policy_description        = "dynamic policy created for HaProxy env"
+
+  policy_statements = ["Allow dynamic-group keepalived_dynamic_group to manage public-ips in compartment ${var.compartment_name}", "Allow dynamic-group keepalived_dynamic_group to manage private-ips in compartment ${var.compartment_name}", "Allow dynamic-group keepalived_dynamic_group to use virtual-network-family in compartment ${var.compartment_name}"]
+}
+

@@ -101,3 +101,23 @@ data "template_file" "bootstrap_keepalived" {
   }
 }
 
+data "template_file" "bootstrap_web" {
+  template = "${file("${path.module}/userdata/bootstrap_web.tpl")}"
+
+  vars = {
+    timezone = "${var.timezone}"
+  }
+}
+
+# Datasources for computing home region for IAM resources
+data "oci_identity_tenancy" "tenancy" {
+  tenancy_id = "${var.tenancy_ocid}"
+}
+
+data "oci_identity_regions" "home-region" {
+  filter {
+    name   = "key"
+    values = ["${data.oci_identity_tenancy.tenancy.home_region_key}"]
+  }
+}
+
