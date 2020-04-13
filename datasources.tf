@@ -1,3 +1,9 @@
+
+# Find VCN CIDR
+data "oci_core_vcn" "vcn_cidr" {
+  vcn_id = "${var.vcn_id}"
+}
+
 # Get list of Availability Domains
 data "oci_identity_availability_domains" "ADs" {
   compartment_id = "${var.tenancy_ocid}"
@@ -68,9 +74,12 @@ data "template_file" "kplcfg" {
   template = "${file("${path.module}/userdata/keepalived.conf.tpl")}"
 
   vars = {
-    ip1 = "${element(module.create_keepalived.ComputePrivateIPs, count.index)}"
-    ip2 = "${element(module.create_keepalived.ComputePrivateIPs, count.index + 1)}"
-    ip3 = "${element(module.create_keepalived.ComputePrivateIPs, count.index + 2)}"
+    ip0 = "${element(module.create_keepalived.ComputePrivateIPs, count.index)}"
+
+    #ip1 = "${element(module.create_pgsql.ComputePrivateIPs, count.index + 1)}"
+    #ip2 = "${element(module.create_pgsql.ComputePrivateIPs, count.index + 2)}"
+
+    ip1 = "${chomp(replace(join("\n", module.create_keepalived.ComputePrivateIPs), "/${element(module.create_keepalived.ComputePrivateIPs, count.index)}/", ""))}"
   }
 }
 

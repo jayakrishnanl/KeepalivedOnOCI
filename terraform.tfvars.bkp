@@ -1,0 +1,45 @@
+# OCID & CIDR of the VCN
+vcn_id = "ocid1.vcn.oc1.eu-frankfurt-1.aaaaaaaa5v2jd5b3aathqm64ad6oceeoi2jawfzotxr4egumqepopownk5da"
+vcn_cidr = "10.0.0.0/16"
+
+compartment_name = "JayL"
+
+# Timezone of compute instance
+timezone = "GMT"
+
+# Size of volume (in gb) of the instances
+compute_boot_volume_size_in_gb = "50"
+compute_block_volume_size_in_gb = "0"
+
+# Block Volume mount path
+#compute_bv_mount_path = "/mnt/block"
+
+# Prefix to define hostname for service nodes
+keepalived_hostname_prefix = "lb"
+web_hostname_prefix = "web"
+
+# Number of service nodes to be created
+keepalived_instance_count = "3"
+web_instance_count = "1"
+
+# Bastion instance shape
+bastion_instance_shape = "VM.Standard2.1"
+
+# Service instance shape
+keepalived_instance_shape = "VM.Standard2.1"
+web_instance_shape = "VM.Standard2.1"
+
+# OS user
+bastion_user = "opc"
+compute_instance_user = "opc"
+
+# Free Form tags specified to your Regional Subnets
+RegionalPrivateKey = "subnet"
+RegionalPrivateValue = "private-regional"
+RegionalPublicKey = "subnet"
+RegionalPublicValue = "public-regional"
+
+# Floating IP
+VIP = "10.0.8.254"
+
+
