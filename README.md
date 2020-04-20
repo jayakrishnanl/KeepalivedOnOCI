@@ -7,7 +7,7 @@ Folks who contributed with code, feedback, ideas, testing etc:
 -  Jeet Jagasia
 
 ## Pre-requisites
-1. [Download and install Terraform](https://www.terraform.io/downloads.html) (v0.11.8 or later v0.11.X versions)
+1. [Download and install Terraform](https://www.terraform.io/downloads.html) (v0.12.6)
 
 2. Export OCI credentials using guidance at [Export Credentials](https://www.terraform.io/docs/providers/oci/index.html).
 You must use an Admin User account to launch this terraform environment. You may update the credentials in env-vars.sh file and run it to set environment variables for this setup.
